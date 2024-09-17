@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Users = () => {
@@ -67,7 +67,9 @@ const Users = () => {
                 {users.map(user => <p className="mt-4"
                     key={user._id}
                 > Id: {user.id}Name: {user.name}Email: {user.email}
-
+                    <Link to={`/update/${user._id}`}>
+                        <button className="btn mx-4 btn-sm btn-primary">Update</button>
+                    </Link>
                     <button onClick={() => handleDelete(user._id)} className="btn mx-4 btn-sm btn-error">Delete</button> </p>)}
 
             </div>
